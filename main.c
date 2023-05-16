@@ -71,6 +71,5 @@ int main(int ac, char **argv)
 	}
 	free(buff_copy);
 	free(buff);
-	printf("%s", cmd_prmpt);
 	return (0);
 }
