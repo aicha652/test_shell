@@ -1,14 +1,14 @@
 #include "main.h"
 
-void execmd(char **argv)
+void exec(char **arguments)
 {
 	char *cmd = NULL;
 
-	if (argv)
+	if (arguments)
 	{
-		cmd = argv[0];
+		cmd = arguments[0];
 
-		if (execve(cmd, argv, NULL) == -1)
+		if (execve(cmd, arguments, NULL) == -1)
 		{
 			perror("./hsh");
 		}
@@ -67,9 +67,10 @@ int main(int ac, char **argv)
 		}
 		argv[i] = NULL;
 
-		execmd(argv);
+		exec(argv);
 	}
 	free(buff_copy);
 	free(buff);
+	printf("%s", cmd_prmpt);
 	return (0);
 }
