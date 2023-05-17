@@ -29,7 +29,7 @@ int main(int ac, char **argv)
 
 	while(1)
 	{
-		printf("#cisfun$ ");
+		write(STDIN_FILENO,"#cisfun$ ", 9);
 		characters = getline(&buff, &buff_size, stdin);
 		if (characters == -1)
 		{
@@ -66,11 +66,12 @@ int main(int ac, char **argv)
 		}
 		argv[i] = NULL;
 
-		if (strcmp(argv[0], "exit") == 0)
+		if (_strcmp(argv[0], "exit") == 0)
 		{
 			exit(0);
 		}
 		exec(argv);
+		
 
 	}
 	free(buff_copy);

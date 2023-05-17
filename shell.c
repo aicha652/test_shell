@@ -5,7 +5,8 @@ int main(int ac, char **argv)
 	char *buff;
 	size_t buff_size = 0;
 	ssize_t characters;
-	/*const char *delim = " \n";*/
+	const char *del = " \n";
+	char *mytoken;
 
 	(void)ac;
 	(void)argv;
@@ -25,8 +26,12 @@ int main(int ac, char **argv)
 			printf("Exit....");
 			exit(-1);
 		}
-	}
-	/*token = strtok(buff, delim);*/
+		mytoken = strtok(buff, delim);
+		while(mytoken != NULL)
+		{
+			mytoken = strtok(NULL, del);
+		}
+
 
 	free(buff);
 	return (0);

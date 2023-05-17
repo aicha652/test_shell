@@ -8,4 +8,6 @@
 #include <sys/wait.h>
 #include <string.h>
 
+int _strcmp(char *s1, char *s2);
+
 #endif /* MAIN_H */
