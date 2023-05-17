@@ -17,7 +17,6 @@ void exec(char **arguments)
 
 int main(int ac, char **argv)
 {
-	char *cmd_prmpt = "#cisfun$ ";
 	char *buff, *buff_copy;
 	size_t buff_size = 0;
 	ssize_t characters;
@@ -30,7 +29,7 @@ int main(int ac, char **argv)
 
 	while(1)
 	{
-		printf("%s", cmd_prmpt);
+		printf("#cisfun$ ");
 		characters = getline(&buff, &buff_size, stdin);
 		if (characters == -1)
 		{
