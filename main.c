@@ -15,7 +15,7 @@ void exec(char **arguments)
 	}
 }
 
-int main(int ac, char **argv)
+int main(int ac, char **argv, char *envp[])
 {
 	char *buff, *buff_copy;
 	size_t buff_size = 0;
@@ -23,7 +23,9 @@ int main(int ac, char **argv)
 	const char *delim = " \n";
 	int sum_tokens = 0;
 	char *token;
-	int i;
+	int i, j;
+	size_t length;
+	const char newline = '\n';
 
 	(void)ac;
 
@@ -69,6 +71,20 @@ int main(int ac, char **argv)
 		if (_strcmp(argv[0], "exit") == 0)
 		{
 			exit(0);
+		}
+		if (_strcmp(argv[0], "ls") == 0)
+		{
+			*argv = "/bin/ls";
+		}
+		if (_strcmp(argv[0], "env") == 0)
+		{
+			for (j = 0; envp[j] != NULL; j++)
+			{
+				length = _strlen(envp[i]);
+				write(1, envp[i], length);
+				write(1, &newline, 1);
+			}
+			return (0);
 		}
 		exec(argv);
 		
