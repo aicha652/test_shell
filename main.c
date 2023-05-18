@@ -80,15 +80,12 @@ int main(int ac, char **argv, char *envp[])
 		{
 			for (j = 0; envp[j] != NULL; j++)
 			{
-				length = _strlen(envp[i]);
-				write(1, envp[i], length);
+				length = _strlen(envp[j]);
+				write(1, envp[j], length);
 				write(1, &newline, 1);
 			}
-			return (0);
 		}
 		exec(argv);
-		
-
 	}
 	free(buff_copy);
 	free(buff);
