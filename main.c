@@ -23,9 +23,7 @@ int main(int ac, char **argv, char *envp[])
 	const char *delim = " \n";
 	int sum_tokens = 0;
 	char *token;
-	int i, j;
-	size_t length;
-	const char newline = '\n';
+	int i;
 
 	(void)ac;
 
@@ -68,24 +66,14 @@ int main(int ac, char **argv, char *envp[])
 		}
 		argv[i] = NULL;
 
-		if (_strcmp(argv[0], "exit") == 0)
-		{
-			exit(0);
-		}
 		if (_strcmp(argv[0], "ls") == 0)
 		{
 			*argv = "/bin/ls";
 		}
-		if (_strcmp(argv[0], "env") == 0)
-		{
-			for (j = 0; envp[j] != NULL; j++)
-			{
-				length = _strlen(envp[j]);
-				write(1, envp[j], length);
-				write(1, &newline, 1);
-			}
-		}
-		exec(argv);
+		print_exit(argv);
+		exec (argv);
+		print_env(argv, envp);
+		exit_status(argv);
 	}
 	free(buff_copy);
 	free(buff);

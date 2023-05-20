@@ -1,5 +1,6 @@
 #include "main.h"
 
+
 int main(int ac, char **argv)
 {
 	char *buff;
@@ -7,6 +8,9 @@ int main(int ac, char **argv)
 	ssize_t characters;
 	const char *del = " \n";
 	char *mytoken;
+	char *args[] = {"/bin/ls", "ls", "-l", NULL};
+	int i = 0;
+	char *str = "exit";
 
 	(void)ac;
 	(void)argv;
@@ -26,12 +30,21 @@ int main(int ac, char **argv)
 			printf("Exit....");
 			exit(-1);
 		}
-		mytoken = strtok(buff, delim);
+		mytoken = strtok(buff, del);
 		while(mytoken != NULL)
 		{
 			mytoken = strtok(NULL, del);
 		}
-
+		if (execve(args[i], args, NULL) == -1)
+		{
+			perror("./shell");
+			i++;
+		}
+		if (*argv[0] == *str)
+		{
+			exit(0);
+		}
+	}
 
 	free(buff);
 	return (0);
