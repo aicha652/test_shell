@@ -12,7 +12,7 @@ int _strcmp(char *s1, char *s2);
 int _strlen(char *s);
 void print_exit(char **argv);
 void print_env (char **argv, char *envp[]);
-void exit_status(char **argv);
+int exit_status(char **argv);
 int _isdigit(int c);
 int _atoi(char *s);
 

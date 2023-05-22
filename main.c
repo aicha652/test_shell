@@ -66,14 +66,25 @@ int main(int ac, char **argv, char *envp[])
 		}
 		argv[i] = NULL;
 
+		if (exit_status(argv) != 0)
+		{
+			exit(EXIT_SUCCESS);
+		}
+
 		if (_strcmp(argv[0], "ls") == 0)
 		{
 			*argv = "/bin/ls";
+			exec(argv);
 		}
-		print_exit(argv);
-		exec (argv);
-		print_env(argv, envp);
-		exit_status(argv);
+		else if (_strcmp(argv[0], "env") == 0)
+		{
+			print_env(argv, envp);
+		}
+		else
+		{
+			print_exit(argv);
+			exec(argv);
+		}
 	}
 	free(buff_copy);
 	free(buff);

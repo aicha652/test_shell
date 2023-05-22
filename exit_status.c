@@ -1,6 +1,6 @@
 #include "main.h"
 
-void exit_status(char **argv)
+int exit_status(char **argv)
 {
 	int i = 0, status;
 
@@ -10,15 +10,17 @@ void exit_status(char **argv)
 		{
 			while(argv[1][i] != '\0')
 			{
-				if (_isdigit(argv[1][i]) == 0)
+				if (!_isdigit((unsigned char)argv[1][i]))
 				{
-					printf("status must be an intger");
+					printf("You should put an intger");
+					return (1);
 				}
 				i++;
 			}
 			status = _atoi(argv[1]);
-			exit (status);
+			exit(status);
 		}
+		exit(0);
 	}
-
+	return (0);
 }
